@@ -1,101 +1,72 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import { ScrollArea } from '@/components/ui/scroll-area';
+import { 
+  Briefcase, 
+  Code, 
+  Building2, 
+  Stethoscope, 
+  Truck, 
+  GraduationCap, 
+  ShoppingBag, 
+  Utensils, 
+  BadgeDollarSign, 
+  Globe,
+  PenTool,
+  Hammer,
+  Microscope
+} from 'lucide-react';
 
 const CategoryBrowser = () => {
-  // Mock data - replace with actual API data
   const categories = [
-    {
-      id: 1,
-      name: 'Technology',
-      icon: '💻',
-      jobs: 120,
-      link: '/jobs?category=technology'
-    },
-    {
-      id: 2,
-      name: 'Marketing',
-      icon: '📈',
-      jobs: 85,
-      link: '/jobs?category=marketing'
-    },
-    {
-      id: 3,
-      name: 'Finance',
-      icon: '💰',
-      jobs: 75,
-      link: '/jobs?category=finance'
-    },
-    {
-      id: 4,
-      name: 'Design',
-      icon: '🎨',
-      jobs: 60,
-      link: '/jobs?category=design'
-    },
-    {
-      id: 5,
-      name: 'Healthcare',
-      icon: '🏥',
-      jobs: 95,
-      link: '/jobs?category=healthcare'
-    },
-    {
-      id: 6,
-      name: 'Education',
-      icon: '📚',
-      jobs: 50,
-      link: '/jobs?category=education'
-    },
-    {
-      id: 7,
-      name: 'Customer Service',
-      icon: '📞',
-      jobs: 45,
-      link: '/jobs?category=customer-service'
-    },
-    {
-      id: 8,
-      name: 'Engineering',
-      icon: '⚙️',
-      jobs: 110,
-      link: '/jobs?category=engineering'
-    }
+    { name: "Technology", icon: <Code className="h-8 w-8" />, color: "bg-blue-100" },
+    { name: "Healthcare", icon: <Stethoscope className="h-8 w-8" />, color: "bg-green-100" },
+    { name: "Finance", icon: <BadgeDollarSign className="h-8 w-8" />, color: "bg-purple-100" },
+    { name: "Education", icon: <GraduationCap className="h-8 w-8" />, color: "bg-yellow-100" },
+    { name: "Retail", icon: <ShoppingBag className="h-8 w-8" />, color: "bg-pink-100" },
+    { name: "Logistics", icon: <Truck className="h-8 w-8" />, color: "bg-orange-100" },
+    { name: "Corporate", icon: <Building2 className="h-8 w-8" />, color: "bg-indigo-100" },
+    { name: "Hospitality", icon: <Utensils className="h-8 w-8" />, color: "bg-red-100" },
+    { name: "Design", icon: <PenTool className="h-8 w-8" />, color: "bg-teal-100" },
+    { name: "Construction", icon: <Hammer className="h-8 w-8" />, color: "bg-amber-100" },
+    { name: "Science", icon: <Microscope className="h-8 w-8" />, color: "bg-cyan-100" },
+    { name: "Global", icon: <Globe className="h-8 w-8" />, color: "bg-violet-100" }
   ];
 
   return (
-    <section className="py-16 bg-gray-50">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10">
-          <div>
-            <h2 className="text-3xl font-bold text-gray-900 mb-2">Browse by Category</h2>
-            <p className="text-gray-600">Find jobs in your field of expertise</p>
-          </div>
-          <Link to="/jobs">
-            <Button variant="outline" className="mt-4 md:mt-0">
-              View All Jobs
-            </Button>
-          </Link>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    <div className="w-full max-w-6xl mx-auto">
+      <div className="flex items-center justify-between mb-6">
+        <h2 className="text-2xl font-bold">Browse Jobs by Category</h2>
+        <a href="/all-categories" className="text-blue-600 hover:underline font-medium">
+          View All Categories
+        </a>
+      </div>
+      
+      <ScrollArea className="w-full">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
           {categories.map((category) => (
-            <Link key={category.id} to={category.link}>
-              <Card className="transition-all hover:shadow-md h-full">
-                <CardContent className="p-6">
-                  <div className="flex flex-col items-center text-center">
-                    <span className="text-4xl mb-4">{category.icon}</span>
-                    <h3 className="font-semibold text-lg text-gray-900 mb-2">{category.name}</h3>
-                    <p className="text-sm text-gray-600">{category.jobs} open positions</p>
+            <Card 
+              key={category.name} 
+              className="overflow-hidden cursor-pointer hover:shadow-md transition-shadow"
+            >
+              <CardContent className="p-0">
+                <a href={`/jobs/category/${category.name.toLowerCase()}`} className="block">
+                  <div className={`flex flex-col items-center justify-center p-6 ${category.color}`}>
+                    <div className="mb-3">
+                      {category.icon}
+                    </div>
+                    <span className="font-medium text-center">{category.name}</span>
+                    <span className="text-sm text-gray-500 mt-1">
+                      Browse Jobs
+                    </span>
                   </div>
-                </CardContent>
-              </Card>
-            </Link>
+                </a>
+              </CardContent>
+            </Card>
           ))}
         </div>
-      </div>
-    </section>
+      </ScrollArea>
+    </div>
   );
 };
 
