@@ -37,13 +37,8 @@ const Header = () => {
         {/* Right side - Auth buttons */}
         <div className="flex items-center space-x-4">
           <Link to="/signin">
-            <Button variant="outline" className="hidden sm:inline-flex">
+            <Button variant="outline" className="hidden sm:inline-flex cursor-pointer">
               Sign In
-            </Button>
-          </Link>
-          <Link to="/signup">
-            <Button className="bg-blue-600 hover:bg-blue-700">
-              Sign Up
             </Button>
           </Link>
           
