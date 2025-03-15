@@ -93,7 +93,7 @@ const MobileAppPromotion = () => {
                 <div className="bg-gray-800 rounded-3xl h-full w-full relative overflow-hidden border-8 border-gray-800">
                   {/* Phone screen - using placeholder for actual screenshot */}
                   <div className="h-full w-full bg-white rounded-2xl overflow-hidden">
-                    <img src="/api/placeholder/250/500" alt="App Screenshot" className="object-cover w-full h-full" />
+                    <img src="appImage2.png" alt="App Screenshot" className="object-cover w-full h-full" />
                   </div>
                   {/* Home button */}
                   <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 w-10 h-1 bg-gray-500 rounded-full"></div>
@@ -105,7 +105,7 @@ const MobileAppPromotion = () => {
                 <div className="bg-gray-800 rounded-3xl h-full w-full relative overflow-hidden border-8 border-gray-800 rotate-12">
                   {/* Phone screen - using placeholder for actual screenshot */}
                   <div className="h-full w-full bg-white rounded-2xl overflow-hidden">
-                    <img src="/api/placeholder/220/440" alt="App Screenshot" className="object-cover w-full h-full" />
+                    <img src="appImage.png" alt="App Screenshot" className="object-cover w-full h-full" />
                   </div>
                 </div>
               </div>

@@ -27,7 +27,7 @@ const Footer = () => {
                 <path d="M16 12h-6.5" />
                 <path d="M13 15l3-3-3-3" />
               </svg>
-              <span className="ml-2 text-xl font-bold text-white">JobPortal</span>
+              <span className="ml-2 text-xl font-bold text-white">JobHunter</span>
             </Link>
             <p className="text-gray-400">
               Connecting talented professionals with their dream careers.
@@ -98,7 +98,7 @@ const Footer = () => {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row md:justify-between items-center">
             <div className="text-gray-400 text-sm mb-4 md:mb-0">
-              © {currentYear} JobPortal. All rights reserved.
+              © {currentYear} JobHunter. All rights reserved.
             </div>
             <div className="flex space-x-6">
               <Link to="/terms" className="text-gray-400 hover:text-white text-sm">Terms of Service</Link>

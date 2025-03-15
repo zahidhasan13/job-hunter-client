@@ -1,8 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
+import useAuthContext from '@/hooks/useAuthContext';
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
 const Header = () => {
+  const {user} = useAuthContext();
   return (
     <header className="w-full bg-white border-b border-gray-200 shadow-sm">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
@@ -22,7 +26,7 @@ const Header = () => {
               <path d="M16 12h-6.5" />
               <path d="M13 15l3-3-3-3" />
             </svg>
-            <span className="ml-2 text-xl font-bold text-gray-900">JobPortal</span>
+            <span className="ml-2 text-xl font-bold text-gray-900">JobHunter</span>
           </Link>
         </div>
 
@@ -36,11 +40,34 @@ const Header = () => {
 
         {/* Right side - Auth buttons */}
         <div className="flex items-center space-x-4">
-          <Link to="/signin">
-            <Button variant="outline" className="hidden sm:inline-flex cursor-pointer">
-              Sign In
-            </Button>
-          </Link>
+          {user ? (
+             <Popover>
+             <PopoverTrigger asChild>
+               <Avatar className="cursor-pointer">
+                 <AvatarImage src={user?.avatarUrl || "https://via.placeholder.com/150"} alt="User Avatar" />
+                 <AvatarFallback>
+                   {user?.name ? user.name.charAt(0).toUpperCase() : "U"}
+                 </AvatarFallback>
+               </Avatar>
+             </PopoverTrigger>
+             <PopoverContent className="w-60">
+               <div className="grid gap-2">
+                 <Link to="/profile" className="hover:bg-gray-100 p-2 rounded">
+                   Profile
+                 </Link>
+                 <Button variant="outline">
+                   Logout
+                 </Button>
+               </div>
+             </PopoverContent>
+           </Popover>
+          ) : (
+            <Link to="/auth">
+              <Button variant="outline" className="hidden sm:inline-flex cursor-pointer">
+                Sign In / Sign Up
+              </Button>
+            </Link>
+          )}
           
           {/* Mobile menu button */}
           <div className="md:hidden">
