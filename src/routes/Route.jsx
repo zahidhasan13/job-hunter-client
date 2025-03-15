@@ -2,6 +2,7 @@ import App from "@/App";
 import Auth from "@/pages/Auth";
 import FindJobs from "@/pages/FindJobs";
 import Home from "@/pages/Home";
+import ProfilePage from "@/pages/ProfilePage";
 import { createBrowserRouter } from "react-router-dom";
 
 const router = createBrowserRouter([
@@ -16,7 +17,11 @@ const router = createBrowserRouter([
         {
           path: "/jobs",
           element: <FindJobs/>
-        }
+        },
+        {
+          path: "/profile",
+          element: <ProfilePage/>
+        },
       ]
     },
     {
